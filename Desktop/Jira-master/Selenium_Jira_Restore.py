@@ -2,9 +2,9 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-base_url = "https://jira.wip.gapinc.com"
-login_id = "jira-test"
-login_pwd = "gap123"
+base_url = ""
+login_id = ""
+login_pwd = ""
 
 driver = webdriver.Chrome(executable_path="C:/Users/akagarw/Desktop/Work/Scripts/JIRA/Automation/Jira Restore/restore1/drivers/chromedriver_win32/chromedriver.exe")
 driver.maximize_window()
@@ -13,7 +13,7 @@ driver.implicitly_wait(20)
 
 driver.get(base_url)
 
-assert "System Dashboard - GapTech JIRA" in driver.title
+assert "" in driver.title
 
 input_login = driver.find_element_by_id("login-form-username")
 input_login.clear()
@@ -25,7 +25,6 @@ input_pwd.send_keys(login_pwd)
 
 input_login.send_keys(Keys.RETURN)
 
-assert "System Dashboard - GapTech JIRA" in driver.title
 
 admin = driver.find_element_by_id("admin_menu")
 admin.click()

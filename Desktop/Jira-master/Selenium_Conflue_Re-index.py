@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 
 import config
 
-base_url = "https://confluence.wip.gapinc.com"
+base_url = ""
 login_id = config.username
 login_pwd = config.password
 
@@ -14,8 +14,6 @@ driver = webdriver.Chrome(executable_path="C:/Users/akagarw/Desktop/Work/Scripts
 driver.maximize_window()
 driver.implicitly_wait(10)
 driver.get(base_url)
-
-assert "Log In - Confluence WIP" in driver.title
 
 input_login = driver.find_element_by_id("os_username")
 input_login.clear()
@@ -27,21 +25,16 @@ input_pwd.send_keys(login_pwd)
 
 input_pwd.send_keys(Keys.RETURN)
 
-assert "Dashboard - Confluence WIP" in driver.title
-
 config = driver.find_element_by_id("admin-menu-link")
 config.click()
 
 admin = driver.find_element_by_id("administration-link")
 admin.click()
-assert "Administrator Access - Confluence WIP" in driver.title
 
 admin_pwd = driver.find_element_by_id("password")
 admin_pwd.clear()
 admin_pwd.send_keys(login_pwd)
 admin_pwd.send_keys(Keys.RETURN)
-
-assert "General Configuration - Confluence WIP" in driver.title
 
 # content_index = driver.find_element_by_xpath('//a[@href="/admin/search-indexes.action"]')
 content_index = driver.find_element_by_link_text("Content Indexing")
